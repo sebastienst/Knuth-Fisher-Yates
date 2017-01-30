@@ -51,7 +51,7 @@ function SpielStart() {
 	}
 
 function Karten(){
-	Erstekarte.push("KreuzKonig");
+    Erstekarte.push("KreuzKonig");
     Erstekarte.push("KreuzDame");
     Erstekarte.push("KreuzBube");
     Erstekarte.push("PikKonig");
