@@ -75,9 +75,9 @@ function NeuesFeld(){
 	}
 
 function anzeige(){
-	document.getElementById("K1").src = "./IMG/cards/" + Erstekarte[3] + ".png"
-    document.getElementById("K2").src = "./IMG/cards/" + Zweitekarte[3] + ".png"
-    document.getElementById("K3").src = "./IMG/cards/" + Drittekarte[3] + ".png"
+	document.getElementById("K1").src = "./Bilder + Erstekarte[3] + ".png"
+    document.getElementById("K2").src = "./Bilder" + Zweitekarte[3] + ".png"
+    document.getElementById("K3").src = "./Bilder" + Drittekarte[3] + ".png"
 	}
 	
 function Mischen(array) {
