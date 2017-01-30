@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Knuth-Fisher-Yates</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" type="text/css" href="CSS/Knuth-Fisher-Yates.css">
+      <script src="Knuth Fisher Yates.js" type="application/javascript"></script>
+  </head>
+
+  <body>
+    <h3> Knuth Fisher Yates </h3>
+
+    <div>
+        <div>
+            Einsatz <input type="text" name="Einsatz" id="Einsatz" value="0"/>
+            <input class="Button" type="button" value="Spielen" id="Button" onclick="SpielStart()" >
+            Geld: <input type="label" name="UbGeld" id="UbGeld" value="300" disabled/>
+            Letzter Gewinn: <input type="text" name="Summe" id="Summe" value="" disabled/>
+            </br>
+            <input class="Neustart" type="button" value="Neustart" id="myButton" onclick="Neustart()" >
+         </div>
+          </br>
+        <div>
+            <input type="image" name="Karte" id="K1"  />
+            <input type="image" name="Karte" id="K2"  />
+            <input type="image" name="Karte" id="K3"  />
+        </div>
+      </div>
+
+  
+    <script type="application/javascript">
+        main()
+    </script>
+
+  </body>
+</html>
