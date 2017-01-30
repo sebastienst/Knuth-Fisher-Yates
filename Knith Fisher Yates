@@ -1,0 +1,118 @@
+var Erstekarte = [];
+var Zweitekarte = [];
+var Drittekarte = [];
+var Multipliziert = 2;
+
+
+function main(){
+    Karten();
+    NeuesFeld();
+}
+
+function Neustart(){
+    NeuesFeld();
+}
+
+function SpielStart() {
+    try{ 
+        var Einsatz = parseInt(document.getElementById("einsatz").value);
+        var UbrigesGeld = parseInt(document.getElementById("UbGeld").value);
+        console.log(Einsatz + " " + UbrigesGeld);
+        if(Einsatz <= UbrigesGeld && Einsatz > 0){
+            UbrigesGeld = UbrigesGeld - Einsatz;
+            document.getElementById("UbGeld").value = UbrigesGeld;
+			Erstekarte = shuffle(Erstekarte);
+            Zweitekarte = shuffle(Zweitekarte);
+            Drittekarte = shuffle(Drittekarte);
+			anzeige();
+            var Sieg = Resultat();
+            console.log(Sieg);
+			if(Sieg == 1){
+                document.getElementById("UbGeld").value = UbrigesGeld + Einsatz;
+                document.getElementById("Summe").value = Einsatz;
+                alert("Gewinn: " + Einsatz + " !")
+				
+				else if(Sieg == 0){
+					document.getElementById("UbGeld").value = UbrigesGeld + Einsatz * Multipliziert;
+					document.getElementById("Summe").value = Einsatz * Multipliziert;
+					alert("Gewinn: " + Einsatz * Multipliziert + " !")
+				}	
+			
+				else{
+					document.getElementById("Summe").value = 0;
+					}
+			}else{
+				alert("nicht genugend Geld");
+			}
+		}
+		catch(e){
+			console.log(e);
+		}
+	}
+
+function Karten(){
+	Erstekarte.push("KreuzKonig");
+    Erstekarte.push("KreuzDame");
+    Erstekarte.push("KreuzBube");
+    Erstekarte.push("PikKonig");
+    Zweitekarte.push("PikDame");
+    Zweitekarte.push("PikBube");
+    Zweitekarte.push("HerzKonig");
+    Zweitekarte.push("HerzDame");
+    Drittekarte.push("HerzBube");
+    Drittekarte.push("KaroKonig");
+    Drittekarte.push("KaroDame");
+    Drittekarte.push("KaroBube");
+	}
+
+function NeuesFeld(){
+    document.getElementById("einsatz").value = "";
+    document.getElementById("UbGeld").value = 300;
+    document.getElementById("K1").value = "";
+    document.getElementById("K2").value = "";
+    document.getElementById("K3").value = "";
+    document.getElementById("Summe").value = "";
+	}
+
+function anzeige(){
+	document.getElementById("K1").src = "./IMG/cards/" + Erstekarte[3] + ".png"
+    document.getElementById("K2").src = "./IMG/cards/" + Zweitekarte[3] + ".png"
+    document.getElementById("K3").src = "./IMG/cards/" + Drittekarte[3] + ".png"
+	}
+	
+function Mischen(array) {
+    var Kopie = [], x = array.length, i;
+		while (x) {
+			i = Math.floor(Math.random() * x--);
+			Kopie.push(array.splice(i, 1)[0]);
+		}
+	return Kopie;
+	}
+
+function Resultat(){
+    var Karte = [];
+    var Name ="";
+	for(var i = Erstekarte[3].length - 2; i < Erstekarte[3].length; i++ ){
+        Name = Name + Erstekarte[3][i];
+    }
+    Karte.push(Name);
+    Name="";
+
+    for(var i = Zweitekarte[3].length - 2; i < Zweitekarte[3].length; i++ ){
+        Name = Name + Zweitekarte[3][i];
+    }
+    Karte.push(Name);
+    Name="";
+
+    for(var i = cardsThree[3].length - 2; i < cardsThree[3].length; i++ ){
+        Name = Name + cardsThree[3][i];
+    }
+    Karte.push(Name);
+
+    if(Karte[0] == Karte[1] && Karte[1] == Karte[2]){
+        return 0;
+    }else if((Karte[0] == "x" || Karte[0] == "y") && (Karte[1] == "x" || Karte[1] == "y") && (Karte[2] == "x" || Karte[2] == "y")){
+        return 1;
+    }
+    return -1;
+}
